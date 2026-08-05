@@ -1,15 +1,11 @@
-import {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 interface ISearchInputProps {
-  type: string
-  text: string
   onSearch: (query: string) => void;
   placeholder?: string
 }
 
 export const SearchBar = ({
-                            type,
-                            text,
                             placeholder = "Buscar",
                             onSearch
                           }: ISearchInputProps) => {
@@ -27,15 +23,26 @@ export const SearchBar = ({
     }
   }
 
+  useEffect(() => {
+
+    const timeout = setTimeout(() => {
+      onSearch(query)
+    }, 700)
+
+    return () => {
+      clearTimeout(timeout)
+    }
+  }, [query, onSearch])
+
   return (
     <div className="search-container">
-      <input type={type}
+      <input type="text"
              placeholder={placeholder}
              value={query}
              onChange={e => setQuery(e.target.value)}
              onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSearch}>{text}</button>
+      <button onClick={handleSearch}>Buscar</button>
     </div>
   )
 }
