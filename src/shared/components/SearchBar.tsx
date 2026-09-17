@@ -24,7 +24,6 @@ export const SearchBar = ({
   }
 
   useEffect(() => {
-
     const timeout = setTimeout(() => {
       onSearch(query)
     }, 700)
