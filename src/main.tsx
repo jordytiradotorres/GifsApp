@@ -4,7 +4,7 @@ import {GifsApp} from "./GifsApp.tsx";
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <GifsApp/>
-    </StrictMode>,
+  <StrictMode>
+    <GifsApp/>
+  </StrictMode>,
 )
